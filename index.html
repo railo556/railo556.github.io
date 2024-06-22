@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres salir conmigo?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .gif-container {
+            margin-bottom: 20px;
+        }
+        .text-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        #yes-button {
+            transition: transform 0.3s;
+        }
+    </style>
+    <script>
+        let scale = 1;
+        let clickCount = 0;
+
+        function makeYesButtonBigger() {
+            scale += 0.5;  // Incrementa el tamaño en 0.5 cada vez
+            document.getElementById('yes-button').style.transform = `scale(${scale})`;
+
+            clickCount++;
+            const noButton = document.getElementById('no-button');
+            if (clickCount === 1) {
+                noButton.textContent = '¿Estás segura?';
+            } else if (clickCount === 2) {
+                noButton.textContent = 'Por favor';
+            } else if (clickCount === 3) {
+                noButton.textContent = 'Ándale, yo invito';
+            } else if (clickCount === 4) {
+                noButton.textContent = 'Te compro un pan';
+            } else if (clickCount === 5) {
+                noButton.textContent = 'Andale le pego al Ernesto';
+            } else if (clickCount === 6) {
+                noButton.textContent = 'Le pego al Ricardo';
+            } else if (clickCount === 7) {
+                noButton.textContent = 'Le voy a pegar a muro si le sigues dando que no :cc';
+            } else if (clickCount === 8) {
+                noButton.textContent = 'Ya dale que si se me acabaron las ideas';
+            } else if (clickCount === 9) {
+                noButton.textContent = 'Porfis';
+            }
+        }
+
+        function showNewMessage() {
+            document.getElementById('original-content').classList.add('hidden');
+            document.getElementById('new-message').classList.remove('hidden');
+        }
+    </script>
+</head>
+<body>
+    <div id="original-content">
+        <div class="gif-container">
+            <img src="https://media.tenor.com/iRn9h2dTMhcAAAAj/mochi-mochi-peach-cat-cat.gif" alt="GIF divertido" width="300" loop>
+        </div>
+        <div class="text-container">
+            <p>¿Vamos por un shushi?</p>
+        </div>
+        <div class="button-container">
+            <button id="yes-button" onclick="showNewMessage()">Sí</button>
+            <button id="no-button" onclick="makeYesButtonBigger()">No</button>
+        </div>
+    </div>
+    <div id="new-message" class="hidden">
+        <div class="text-container">
+            <p>¡Genial! ¿Qué día nos vemos?</p>
+        </div>
+        <div class="gif-container">
+            <img src="https://media.tenor.com/v-Xr3cXdHzwAAAAM/100.gif" alt="GIF de celebración" width="300">
+        </div>
+    </div>
+</body>
+</html>
+
+
